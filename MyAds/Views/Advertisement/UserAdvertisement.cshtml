@@ -1,0 +1,43 @@
+﻿@model UserAdvertisementViewModel
+
+<div>
+    <h3>Все ваши обьявления</h3>
+
+    @if (Model.Ads.Any())
+    {
+        <table>
+            <tr>
+                <th>Имя товара</th>
+                <th>Описание</th>
+                <th>Cостояние</th>
+                <th>Дата</th>
+            </tr>
+
+            @foreach (var item in Model.Ads)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Type</td>
+                    <td>@item.CreationTime</td>
+                    <td>
+                        <button class="show"><a asp-controller="Advertisement" asp-action="Delete" asp-route-id="@item.Id">Удалить</a></button>
+                    </td>
+                    <td>
+                        <button class="show"><a asp-controller="Advertisement" asp-action="EditAd" asp-route-id="@item.Id">Редактировать</a></button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <p>История пуста</p>
+    }
+
+</div>
+
+@section Links{
+    <link rel="stylesheet" href="~/css/Ads.css" asp-append-version="true" />
+}

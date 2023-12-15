@@ -1,0 +1,62 @@
+﻿@model AllAdvertisementViewModel
+
+<div>
+    <h3>Обьявления всех пользователей</h3>
+
+    @if (Model.Ads.Any())
+    {
+        @foreach (var item in Model.Ads)
+        {
+            <div style='border: 1px solid #f1f1f1; margin-bottom: 20px;'>
+
+                <div>
+                    <b>Автор</b>
+                    @foreach (var user in Model.User)
+                    {
+                        @if (item.UserId == user.Id)
+                        {
+                            @user.UserName
+                        }
+                    }
+                </div>
+
+                <div><b>Название</b> @item.Name</div>
+                <div><b>Описание</b> @item.Description</div>
+                <div><b>Cостояние</b> @item.Type</div>
+                <div><b>Дата создания</b> @item.CreationTime</div>
+                <div>
+                    <button class="show"><a asp-controller="Advertisement" asp-action="AddCom" asp-route-id="@item.Id">Прокомментировать</a></button>
+                </div>
+
+                <div style='padding: 0px 0px 0px 10px;'>
+                    Комментарии
+                    @foreach (var comment in Model.Comments)
+                    {
+                        @if (item.Id == comment.AdId)
+                        {
+                            <div>
+                                @comment.Com
+                            </div>
+                        }
+                    }
+
+                </div>
+                
+
+
+            </div>
+        }
+
+
+
+    }
+    else
+    {
+        <p>История пуста</p>
+    }
+
+</div>
+
+@section Links{
+    <link rel="stylesheet" href="~/css/Ads.css" asp-append-version="true" />
+}

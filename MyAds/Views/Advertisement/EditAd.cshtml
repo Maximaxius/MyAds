@@ -1,0 +1,22 @@
+﻿@model MyAds.Models.Advertisement
+<h2>Обьявление № @Model.Id</h2>
+@using (Html.BeginForm("EditAd", "Advertisement", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.UserId)
+        @Html.HiddenFor(m => m.CreationTime)
+        @Html.HiddenFor(m => m.Type)
+        <p>
+            @Html.LabelFor(m => m.Name, "Название обьявления")
+            <br />
+            @Html.EditorFor(m => m.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Description, "Описание")
+            <br />
+            @Html.EditorFor(m => m.Description)
+        </p>
+        <p><input type="submit" value="Отправить" /></p>
+    </fieldset>
+}

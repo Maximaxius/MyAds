@@ -1,0 +1,12 @@
+﻿@model AddComViewModels
+
+<h2>Добавить комментарий</h2>
+<form method="post" asp-controller="Advertisement" asp-action="AddCom" enctype="multipart/form-data">
+
+    <div class="transaction-form__description transaction-form__bottom">
+        <p class="transaction-input__text--description">Описание комментария </p>
+        <textarea name="Com" cols="40" rows="3" class="transaction-input__description" placeholder="Комментарий"></textarea>
+    </div>
+
+    <button type="submit">Send data</button>
+</form>

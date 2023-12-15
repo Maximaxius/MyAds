@@ -1,0 +1,30 @@
+﻿@model AddViewModel
+
+<h2>Добавить обьявление</h2>
+<form method="post" asp-controller="Advertisement" asp-action="Add" enctype="multipart/form-data">
+
+    <div class="ad-form__amount ad-form__bottom">
+        <p class="ad-input__text--name">Имя товара</p>
+        <input name="Name" type="text" class="ad-input__name" placeholder="Name">
+    </div>
+
+    <div class="ad-form__type ad-form__bottom">
+        <p class="ad-input__text--type">Type</p>
+        <select id="Type" name="Type">
+            <option value="Active">Активная</option>
+            <option value="Inactive">Неактивная</option>
+        </select>
+    </div>
+
+    <div class="ad-form__description ad-form__bottom">
+        <p class="ad-input__text--description">Описание товара </p>
+        <textarea name="Description" cols="40" rows="3" class="ad-input__description" placeholder="Description"></textarea>
+    </div>
+
+    <button type="submit">Send data</button>
+</form>
+
+
+@section Links{
+    <link rel="stylesheet" href="~/css/Inp.css" asp-append-version="true" />
+}
